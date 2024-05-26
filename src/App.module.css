@@ -1,0 +1,113 @@
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0px 200px;
+}
+
+.firstSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.secondSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.thirdSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fourthSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.fifthSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.topContainer {
+  display: flex;
+  white-space: nowrap;
+  gap: 10px;
+  margin-left: 120px;
+}
+
+.horizontalContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 10px;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 380px;
+}
+
+.bottomContainer {
+  display: flex;
+  white-space: nowrap;
+  margin-left: 100px;
+  gap: 10px;
+}
+
+.trigger {
+  border-radius: 10px;
+  padding: 5px;
+  min-width: 120px;
+  border: 2px solid black;
+}
+
+.blackContent {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.grayContent {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+  flex-direction: column;
+  gap: 5px;
+  background-color: gray;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.button {
+  width: 50px;
+  height: 20px;
+}
