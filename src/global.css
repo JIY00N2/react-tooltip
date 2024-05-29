@@ -10,11 +10,11 @@
 
 a {
   text-decoration: none;
-  color: inherit;
   border-radius: 10px;
   padding: 8px;
-  width: fit-content;
   border: 2px solid rgb(36, 143, 197);
   background-color: rgb(255, 255, 255);
   color: rgb(36, 143, 197);
+  width: 200px;
+  text-align: center;
 }

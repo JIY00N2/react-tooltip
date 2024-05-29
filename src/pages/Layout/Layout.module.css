@@ -1,6 +1,7 @@
 .layout {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .homeLogo {
@@ -9,10 +10,16 @@
   margin-top: 50px;
   color: palevioletred;
   border-color: palevioletred;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav {
   display: flex;
-  justify-content: space-evenly;
+  margin: 30px 0px;
+  height: 100%;
+  flex-direction: column;
+  gap: 20px;
   align-items: center;
 }

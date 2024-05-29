@@ -3,6 +3,7 @@ import HomePage from "./pages/Home";
 import TooltipPage from "./pages/Tooltip";
 import NotFoundPage from "./pages/NotFound";
 import LayoutPage from "./pages/Layout";
+import ModalPage from "./pages/Modal";
 
 export default function App() {
   return (
@@ -18,6 +19,10 @@ export default function App() {
         <Route
           path="/tooltip"
           element={<TooltipPage />}
+        />
+        <Route
+          path="/modal"
+          element={<ModalPage />}
         />
         <Route
           path="*"
