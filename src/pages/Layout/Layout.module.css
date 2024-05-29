@@ -1,0 +1,18 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.homeLogo {
+  display: flex;
+  margin-left: 50px;
+  margin-top: 50px;
+  color: palevioletred;
+  border-color: palevioletred;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

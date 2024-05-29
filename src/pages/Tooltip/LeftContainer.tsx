@@ -1,15 +1,15 @@
-import { Tooltip } from "./components/Tooltip/Tooltip";
-import styles from "./App.module.css";
+import { Tooltip } from "../../components/Tooltip/Tooltip";
+import styles from "./Tooltip.module.css";
 
-export const RightContainer = () => {
+export const LeftContainer = () => {
   return (
-    <div className={styles.rightContainer}>
+    <div className={styles.leftContainer}>
       <Tooltip
-        direction="rightTop"
+        direction="leftTop"
         offset={5}
       >
         <Tooltip.Trigger>
-          <div className={styles.trigger}>rightTop</div>
+          <div className={styles.trigger}>leftTop</div>
         </Tooltip.Trigger>
         <Tooltip.Content className={styles.blackContent}>
           <Tooltip.Arrow style={{ marginBottom: "-10px" }} />
@@ -19,11 +19,11 @@ export const RightContainer = () => {
         </Tooltip.Content>
       </Tooltip>
       <Tooltip
-        direction="right"
+        direction="left"
         offset={5}
       >
         <Tooltip.Trigger>
-          <div className={styles.trigger}>right</div>
+          <div className={styles.trigger}>left</div>
         </Tooltip.Trigger>
         <Tooltip.Content className={styles.blackContent}>
           <Tooltip.Arrow />
@@ -33,11 +33,11 @@ export const RightContainer = () => {
         </Tooltip.Content>
       </Tooltip>
       <Tooltip
-        direction="rightBottom"
+        direction="leftBottom"
         offset={5}
       >
         <Tooltip.Trigger>
-          <div className={styles.trigger}>rightBottom</div>
+          <div className={styles.trigger}>leftBottom</div>
         </Tooltip.Trigger>
         <Tooltip.Content className={styles.blackContent}>
           <Tooltip.Arrow style={{ marginBottom: "10px" }} />

@@ -1,29 +1,29 @@
-import { Tooltip } from "./components/Tooltip/Tooltip";
-import styles from "./App.module.css";
+import { Tooltip } from "../../components/Tooltip/Tooltip";
+import styles from "./Tooltip.module.css";
 
-export const LeftContainer = () => {
+export const BottomContainer = () => {
   return (
-    <div className={styles.leftContainer}>
+    <div className={styles.topContainer}>
       <Tooltip
-        direction="leftTop"
+        direction="bottomLeft"
         offset={5}
       >
         <Tooltip.Trigger>
-          <div className={styles.trigger}>leftTop</div>
+          <div className={styles.trigger}>bottomLeft</div>
         </Tooltip.Trigger>
         <Tooltip.Content className={styles.blackContent}>
-          <Tooltip.Arrow style={{ marginBottom: "-10px" }} />
+          <Tooltip.Arrow style={{ marginLeft: "10px" }} />
           <span>prompt text</span>
           <span>prompt text</span>
           <span>prompt text</span>
         </Tooltip.Content>
       </Tooltip>
       <Tooltip
-        direction="left"
+        direction="bottom"
         offset={5}
       >
         <Tooltip.Trigger>
-          <div className={styles.trigger}>left</div>
+          <div className={styles.trigger}>bottom</div>
         </Tooltip.Trigger>
         <Tooltip.Content className={styles.blackContent}>
           <Tooltip.Arrow />
@@ -33,14 +33,14 @@ export const LeftContainer = () => {
         </Tooltip.Content>
       </Tooltip>
       <Tooltip
-        direction="leftBottom"
+        direction="bottomRight"
         offset={5}
       >
         <Tooltip.Trigger>
-          <div className={styles.trigger}>leftBottom</div>
+          <div className={styles.trigger}>bottomRight</div>
         </Tooltip.Trigger>
         <Tooltip.Content className={styles.blackContent}>
-          <Tooltip.Arrow style={{ marginBottom: "10px" }} />
+          <Tooltip.Arrow style={{ marginLeft: "-10px" }} />
           <span>prompt text</span>
           <span>prompt text</span>
           <span>prompt text</span>

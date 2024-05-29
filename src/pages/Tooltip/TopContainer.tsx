@@ -1,5 +1,5 @@
-import { Tooltip } from "./components/Tooltip/Tooltip";
-import styles from "./App.module.css";
+import { Tooltip } from "../../components/Tooltip/Tooltip";
+import styles from "./Tooltip.module.css";
 
 export const TopContainer = () => {
   return (

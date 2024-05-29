@@ -101,9 +101,12 @@ export const Tooltip = ({
     clearTimeout(leaveDelayTimeoutRef.current);
 
     if (hoverVisible) {
-      leaveDelayTimeoutRef.current = setTimeout(() => {
-        setIsTooltipVisible(false);
-      }, Math.max(200, leaveDelay));
+      leaveDelayTimeoutRef.current = setTimeout(
+        () => {
+          setIsTooltipVisible(false);
+        },
+        Math.max(200, leaveDelay),
+      );
     } else {
       leaveDelayTimeoutRef.current = setTimeout(() => {
         setIsTooltipVisible(false);

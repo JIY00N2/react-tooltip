@@ -1,29 +1,29 @@
-import { Tooltip } from "./components/Tooltip/Tooltip";
-import styles from "./App.module.css";
+import { Tooltip } from "../../components/Tooltip/Tooltip";
+import styles from "./Tooltip.module.css";
 
-export const BottomContainer = () => {
+export const RightContainer = () => {
   return (
-    <div className={styles.topContainer}>
+    <div className={styles.rightContainer}>
       <Tooltip
-        direction="bottomLeft"
+        direction="rightTop"
         offset={5}
       >
         <Tooltip.Trigger>
-          <div className={styles.trigger}>bottomLeft</div>
+          <div className={styles.trigger}>rightTop</div>
         </Tooltip.Trigger>
         <Tooltip.Content className={styles.blackContent}>
-          <Tooltip.Arrow style={{ marginLeft: "10px" }} />
+          <Tooltip.Arrow style={{ marginBottom: "-10px" }} />
           <span>prompt text</span>
           <span>prompt text</span>
           <span>prompt text</span>
         </Tooltip.Content>
       </Tooltip>
       <Tooltip
-        direction="bottom"
+        direction="right"
         offset={5}
       >
         <Tooltip.Trigger>
-          <div className={styles.trigger}>bottom</div>
+          <div className={styles.trigger}>right</div>
         </Tooltip.Trigger>
         <Tooltip.Content className={styles.blackContent}>
           <Tooltip.Arrow />
@@ -33,14 +33,14 @@ export const BottomContainer = () => {
         </Tooltip.Content>
       </Tooltip>
       <Tooltip
-        direction="bottomRight"
+        direction="rightBottom"
         offset={5}
       >
         <Tooltip.Trigger>
-          <div className={styles.trigger}>bottomRight</div>
+          <div className={styles.trigger}>rightBottom</div>
         </Tooltip.Trigger>
         <Tooltip.Content className={styles.blackContent}>
-          <Tooltip.Arrow style={{ marginLeft: "-10px" }} />
+          <Tooltip.Arrow style={{ marginBottom: "10px" }} />
           <span>prompt text</span>
           <span>prompt text</span>
           <span>prompt text</span>
