@@ -1,6 +1,5 @@
 import {
   PropsWithChildren,
-  RefCallback,
   useCallback,
   useEffect,
   useRef,
@@ -15,6 +14,7 @@ import { TooltipTrigger } from "./TooltipTrigger";
 import { getTooltipPosition } from "./getTooltipPosition";
 import { getArrowPosition } from "./getArrowPosition";
 import { TooltipDirectionToArrowDirectionMap } from "./constants/converter";
+import { useClientRect } from "../../hooks/useClientRect";
 
 export type PositionType = {
   top?: number;
@@ -76,15 +76,11 @@ export const Tooltip = ({
   const leaveDelayTimeoutRef = useRef<number>(-1);
 
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
-  const [tooltipEl, setTooltipEl] = useState<HTMLDivElement | null>(null);
   const [arrowPosition, setArrowPosition] = useState<ArrowPositionType>({});
   const [arrowShape, setArrowShape] = useState<ArrowShapeType>({});
   const [position, setPosition] = useState<PositionType>({});
 
-  const tooltipRefCallback: RefCallback<HTMLDivElement> = useCallback(
-    (node) => setTooltipEl(node),
-    [],
-  );
+  const [tooltipRect, tooltipCallbackRef] = useClientRect<HTMLDivElement>();
 
   const handleTriggerMouseOver = useCallback(() => {
     clearTimeout(enterDelayTimeoutRef.current);
@@ -101,12 +97,9 @@ export const Tooltip = ({
     clearTimeout(leaveDelayTimeoutRef.current);
 
     if (hoverVisible) {
-      leaveDelayTimeoutRef.current = setTimeout(
-        () => {
-          setIsTooltipVisible(false);
-        },
-        Math.max(200, leaveDelay),
-      );
+      leaveDelayTimeoutRef.current = setTimeout(() => {
+        setIsTooltipVisible(false);
+      }, Math.max(200, leaveDelay));
     } else {
       leaveDelayTimeoutRef.current = setTimeout(() => {
         setIsTooltipVisible(false);
@@ -133,13 +126,12 @@ export const Tooltip = ({
   }, [hoverVisible]);
 
   useEffect(() => {
-    if (!triggerContainerRef.current || !tooltipEl) {
+    if (!triggerContainerRef.current || !tooltipRect) {
       return;
     }
 
     const trigger = triggerContainerRef.current;
     const triggerRect = trigger.getBoundingClientRect();
-    const tooltipRect = tooltipEl.getBoundingClientRect();
 
     setPosition(
       getTooltipPosition(direction, triggerRect, tooltipRect, margin),
@@ -152,14 +144,14 @@ export const Tooltip = ({
       ),
     );
     setArrowPosition(getArrowPosition(direction, tooltipRect, offset));
-  }, [direction, tooltipEl, margin, offset, arrowColor]);
+  }, [direction, tooltipRect, margin, offset, arrowColor]);
 
   return (
     <TooltipContextProvider
       value={{
         triggerRef: triggerContainerRef,
         isTooltipVisible,
-        tooltipRefCallback,
+        tooltipCallbackRef,
         handleTriggerMouseOver,
         handleTriggerMouseOut,
         handleTooltipMouseOver,

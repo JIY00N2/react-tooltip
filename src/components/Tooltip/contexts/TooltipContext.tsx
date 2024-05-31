@@ -14,7 +14,7 @@ type TooltipContextValue = {
   triggerRef: RefObject<HTMLDivElement>;
   isTooltipVisible: boolean;
   position: PositionType;
-  tooltipRefCallback: RefCallback<HTMLDivElement>;
+  tooltipCallbackRef: RefCallback<HTMLDivElement>;
   handleTooltipMouseOver: MouseEventHandler;
   handleTooltipMouseOut: MouseEventHandler;
   handleTriggerMouseOver: MouseEventHandler;

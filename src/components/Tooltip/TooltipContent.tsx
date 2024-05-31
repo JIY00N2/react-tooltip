@@ -10,7 +10,7 @@ export const TooltipContent = ({
   const {
     isTooltipVisible,
     position,
-    tooltipRefCallback,
+    tooltipCallbackRef,
     handleTooltipMouseOver,
     handleTooltipMouseOut,
     forceInvisible,
@@ -26,7 +26,7 @@ export const TooltipContent = ({
         createPortal(
           <div
             {...props}
-            ref={tooltipRefCallback}
+            ref={tooltipCallbackRef}
             onMouseOver={handleTooltipMouseOver}
             onMouseOut={handleTooltipMouseOut}
             style={{
