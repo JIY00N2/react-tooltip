@@ -10,9 +10,9 @@ export default function LayoutPage() {
       >
         홈으로
       </Link>
-      <nav className={styles.nav}>
+      <section className={styles.section}>
         <Outlet />
-      </nav>
+      </section>
     </div>
   );
 }

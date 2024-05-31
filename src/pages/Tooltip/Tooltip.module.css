@@ -1,12 +1,3 @@
-.layout {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-  height: 100vh;
-  padding: 0px 200px;
-}
-
 .firstSection {
   display: flex;
   flex-direction: column;

@@ -12,10 +12,7 @@ export default function TooltipPage() {
   const toggleDisabled = () => setDisabled((prev) => !prev);
 
   return (
-    <div
-      className={styles.layout}
-      style={{ height: "1000px", width: "1000px" }}
-    >
+    <>
       <section className={styles.firstSection}>
         <TopContainer />
         <div className={styles.horizontalContainer}>
@@ -259,6 +256,6 @@ export default function TooltipPage() {
           </Tooltip.Content>
         </Tooltip>
       </section>
-    </div>
+    </>
   );
 }
