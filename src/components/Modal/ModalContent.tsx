@@ -8,7 +8,7 @@ export const ModalContent = ({
 }: ComponentProps<"div">) => {
   const { modalContentCallbackRef, open } = useModalContext();
 
-  const defaultModalContentStyle: CSSProperties = {
+  const defaultModalContentStyles: CSSProperties = {
     position: "fixed",
     top: "50%",
     left: "50%",
@@ -27,7 +27,7 @@ export const ModalContent = ({
           ref={modalContentCallbackRef}
           {...props}
           style={{
-            ...defaultModalContentStyle,
+            ...defaultModalContentStyles,
             ...style,
           }}
         >
