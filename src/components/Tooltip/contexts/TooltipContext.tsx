@@ -24,7 +24,6 @@ type TooltipContextValue = {
 
 const TooltipContext = createContext<TooltipContextValue | null>(null);
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useTooltipContext = () => {
   const value = useContext(TooltipContext);
 
