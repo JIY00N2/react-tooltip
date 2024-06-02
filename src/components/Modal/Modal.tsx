@@ -1,23 +1,21 @@
-import {
-  PropsWithChildren,
-  RefCallback,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { PropsWithChildren, RefCallback, useCallback, useState } from "react";
 import { ModalTrigger } from "./ModalTrigger";
 import { ModalContent } from "./ModalContent";
 import { ModalClose } from "./ModalClose";
 import { ModalOverlay } from "./ModalOverlay";
 import { ModalContextProvider } from "./context/ModalContext";
 import { ModalPortal } from "./ModalPortal";
+import { useKeyDown } from "./hooks/useKeyDown";
+import { useOutsideClick } from "./hooks/useOutsideClick";
 
 type ModalProps = {
-  forceClose?: boolean;
+  closeOnEscape?: boolean;
+  closeOnOutsideClick?: boolean;
 };
 
 export const Modal = ({
-  forceClose = false,
+  closeOnEscape = false,
+  closeOnOutsideClick = false,
   children,
 }: PropsWithChildren<ModalProps>) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -30,40 +28,28 @@ export const Modal = ({
     [],
   );
 
-  useEffect(() => {
-    if (forceClose) {
+  const closeModalEscape = useCallback(() => {
+    if (!closeOnEscape) {
       return;
     }
+    setOpen(false);
+  }, [closeOnEscape]);
 
-    const closeModalOnOutsideClick = (event: MouseEvent) => {
-      if (!(event.target instanceof HTMLDivElement)) {
-        return;
-      }
-      if (!modalContent || modalContent.contains(event.target)) {
-        return;
-      }
-      setOpen(false);
-    };
+  useKeyDown("Escape", closeModalEscape);
 
-    const closeModalEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
-    };
+  const closeModalOnOutsideClick = useCallback(() => {
+    if (!closeOnOutsideClick) {
+      return;
+    }
+    setOpen(false);
+  }, [closeOnOutsideClick]);
 
-    document.addEventListener("mousedown", closeModalOnOutsideClick);
-    document.addEventListener("keydown", closeModalEscape);
-
-    return () => {
-      document.removeEventListener("mousedown", closeModalOnOutsideClick);
-      document.removeEventListener("keydown", closeModalEscape);
-    };
-  }, [modalContent, forceClose]);
+  useOutsideClick<HTMLDivElement>(modalContent, closeModalOnOutsideClick);
 
   return (
     <ModalContextProvider
       value={{
-        modalContentCallbackRef,
+        modalContentRef: modalContentCallbackRef,
         open,
         handleClickOpenModal,
         handleClickCloseModal,

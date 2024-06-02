@@ -4,7 +4,10 @@ import styles from "./Modal.module.css";
 export default function ModalPage() {
   return (
     <div className={styles.layout}>
-      <Modal forceClose={true}>
+      <Modal
+        closeOnEscape
+        closeOnOutsideClick
+      >
         <Modal.Trigger>
           <button>모달 버튼</button>
         </Modal.Trigger>

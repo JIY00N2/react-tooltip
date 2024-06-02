@@ -1,15 +1,16 @@
 import {
+  MouseEventHandler,
   PropsWithChildren,
-  RefCallback,
+  Ref,
   createContext,
   useContext,
 } from "react";
 
 type ModalContextValue = {
-  modalContentCallbackRef: RefCallback<HTMLDivElement>;
+  modalContentRef: Ref<HTMLDivElement>;
   open: boolean;
-  handleClickOpenModal: VoidFunction;
-  handleClickCloseModal: VoidFunction;
+  handleClickOpenModal: MouseEventHandler;
+  handleClickCloseModal: MouseEventHandler;
 };
 
 const ModalContext = createContext<ModalContextValue | null>(null);
