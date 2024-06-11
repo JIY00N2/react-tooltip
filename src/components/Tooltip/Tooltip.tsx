@@ -47,7 +47,7 @@ export type DirectionType =
   | "rightTop"
   | "rightBottom";
 
-type TooltipProps = {
+type TooltipProps = PropsWithChildren<{
   direction: DirectionType;
   margin?: number;
   offset?: number;
@@ -56,7 +56,7 @@ type TooltipProps = {
   hoverVisible?: boolean;
   arrowColor?: string;
   forceInvisible?: boolean;
-};
+}>;
 
 export const Tooltip = ({
   direction,
@@ -68,7 +68,7 @@ export const Tooltip = ({
   hoverVisible = false,
   arrowColor = "black",
   forceInvisible = false,
-}: PropsWithChildren<TooltipProps>) => {
+}: TooltipProps) => {
   const margin = initialMargin ? offset + initialMargin : offset * 2;
 
   const triggerContainerRef = useRef<HTMLDivElement | null>(null);
