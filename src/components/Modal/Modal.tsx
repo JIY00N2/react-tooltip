@@ -1,4 +1,10 @@
-import { PropsWithChildren, RefCallback, useCallback, useState } from "react";
+import {
+  PropsWithChildren,
+  RefCallback,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { ModalTrigger } from "./ModalTrigger";
 import { ModalContent } from "./ModalContent";
 import { ModalClose } from "./ModalClose";
@@ -8,18 +14,26 @@ import { ModalPortal } from "./ModalPortal";
 import { useKeyDown } from "./hooks/useKeyDown";
 import { useOutsideClick } from "./hooks/useOutsideClick";
 
-type ModalProps = {
+type ModalProps = PropsWithChildren<{
+  defaultOpen?: boolean;
   closeOnEscape?: boolean;
   closeOnOutsideClick?: boolean;
-};
+}>;
 
 export const Modal = ({
+  defaultOpen = false,
   closeOnEscape = false,
   closeOnOutsideClick = false,
   children,
-}: PropsWithChildren<ModalProps>) => {
+}: ModalProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const [modalContent, setModalContent] = useState<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (defaultOpen) {
+      setOpen(true);
+    }
+  }, [defaultOpen]);
 
   const handleClickOpenModal = useCallback(() => setOpen(true), []);
   const handleClickCloseModal = useCallback(() => setOpen(false), []);

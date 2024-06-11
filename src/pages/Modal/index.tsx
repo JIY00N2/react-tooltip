@@ -7,6 +7,7 @@ export default function ModalPage() {
       <Modal
         closeOnEscape
         closeOnOutsideClick
+        defaultOpen
       >
         <Modal.Trigger>
           <button>모달 버튼</button>
