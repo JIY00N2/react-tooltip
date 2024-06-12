@@ -2,9 +2,9 @@ import { ComponentProps } from "react";
 import { useModalContext } from "./context/ModalContext";
 
 export const ModalOverlay = ({ style, ...props }: ComponentProps<"div">) => {
-  const { open } = useModalContext();
+  const { isOpen } = useModalContext();
 
-  if (!open) {
+  if (!isOpen) {
     return <></>;
   }
 

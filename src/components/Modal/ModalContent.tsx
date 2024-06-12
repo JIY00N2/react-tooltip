@@ -6,9 +6,9 @@ export const ModalContent = ({
   style,
   ...props
 }: ComponentProps<"div">) => {
-  const { modalContentRef, open } = useModalContext();
+  const { modalContentRef, isOpen } = useModalContext();
 
-  if (!open) {
+  if (!isOpen) {
     return <></>;
   }
 

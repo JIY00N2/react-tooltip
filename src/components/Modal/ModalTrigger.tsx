@@ -6,11 +6,11 @@ export const ModalTrigger = ({
   style,
   ...props
 }: ComponentProps<"div">) => {
-  const { handleClickOpenModal } = useModalContext();
+  const { open } = useModalContext();
 
   return (
     <div
-      onClick={handleClickOpenModal}
+      onClick={open}
       {...props}
       style={{ ...style }}
     >

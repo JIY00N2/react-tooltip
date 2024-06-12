@@ -1,13 +1,18 @@
+import { useEffect, useState } from "react";
 import { Modal } from "../../components/Modal/Modal";
 import styles from "./Modal.module.css";
 
 export default function ModalPage() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => setOpen(true), []);
+
   return (
     <div className={styles.layout}>
       <Modal
         closeOnEscape
         closeOnOutsideClick
-        defaultOpen
+        defaultOpen={open}
       >
         <Modal.Trigger>
           <button>모달 버튼</button>

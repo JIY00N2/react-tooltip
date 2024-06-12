@@ -6,11 +6,11 @@ export const ModalClose = ({
   style,
   ...props
 }: ComponentProps<"div">) => {
-  const { handleClickCloseModal } = useModalContext();
+  const { close } = useModalContext();
 
   return (
     <div
-      onClick={handleClickCloseModal}
+      onClick={close}
       {...props}
       style={{ cursor: "pointer", ...style }}
     >

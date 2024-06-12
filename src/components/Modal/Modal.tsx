@@ -13,6 +13,7 @@ import { ModalContextProvider } from "./context/ModalContext";
 import { ModalPortal } from "./ModalPortal";
 import { useKeyDown } from "./hooks/useKeyDown";
 import { useOutsideClick } from "./hooks/useOutsideClick";
+import { useBoolean } from "../../hooks/useBoolean";
 
 type ModalProps = PropsWithChildren<{
   defaultOpen?: boolean;
@@ -26,17 +27,15 @@ export const Modal = ({
   closeOnOutsideClick = false,
   children,
 }: ModalProps) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const { value: isOpen, setTrue: open, setFalse: close } = useBoolean();
   const [modalContent, setModalContent] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (defaultOpen) {
-      setOpen(true);
+      open();
     }
-  }, [defaultOpen]);
+  }, [defaultOpen, open]);
 
-  const handleClickOpenModal = useCallback(() => setOpen(true), []);
-  const handleClickCloseModal = useCallback(() => setOpen(false), []);
   const modalContentCallbackRef: RefCallback<HTMLDivElement> = useCallback(
     (node) => setModalContent(node),
     [],
@@ -46,8 +45,8 @@ export const Modal = ({
     if (!closeOnEscape) {
       return;
     }
-    setOpen(false);
-  }, [closeOnEscape]);
+    close();
+  }, [closeOnEscape, close]);
 
   useKeyDown("Escape", closeModalEscape);
 
@@ -55,8 +54,8 @@ export const Modal = ({
     if (!closeOnOutsideClick) {
       return;
     }
-    setOpen(false);
-  }, [closeOnOutsideClick]);
+    close();
+  }, [closeOnOutsideClick, close]);
 
   useOutsideClick<HTMLDivElement>(modalContent, closeModalOnOutsideClick);
 
@@ -64,9 +63,9 @@ export const Modal = ({
     <ModalContextProvider
       value={{
         modalContentRef: modalContentCallbackRef,
+        isOpen,
         open,
-        handleClickOpenModal,
-        handleClickCloseModal,
+        close,
       }}
     >
       {children}

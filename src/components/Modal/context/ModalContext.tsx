@@ -8,9 +8,9 @@ import {
 
 type ModalContextValue = {
   modalContentRef: Ref<HTMLDivElement>;
-  open: boolean;
-  handleClickOpenModal: MouseEventHandler;
-  handleClickCloseModal: MouseEventHandler;
+  isOpen: boolean;
+  open: MouseEventHandler;
+  close: MouseEventHandler;
 };
 
 const ModalContext = createContext<ModalContextValue | null>(null);
